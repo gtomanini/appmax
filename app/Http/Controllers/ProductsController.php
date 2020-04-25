@@ -6,7 +6,7 @@ use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use App\Product;
-use App\Http\Requests\StoreUpdateProduct;
+use App\Http\Requests\ProductRequest;
 
 
 class ProductsController extends BaseController {
@@ -39,7 +39,7 @@ class ProductsController extends BaseController {
 
     }
 
-    public function store(StoreUpdateProduct $request) {
+    public function store(ProductRequest $request) {
         $validated = $request->validated();
         $newProduct = new Product();
         $newProduct->sku = $request->input('sku');
@@ -49,7 +49,9 @@ class ProductsController extends BaseController {
         return redirect()->route('dashboard');
     }
 
-    public function update(Request $request) {
+    public function update(ProductRequest $request) {
+        $validated = $request->validated();
+        
         $updateProduct = Product::find($request->input('id'));
         $updateProduct->sku = $request->input('sku');
         $updateProduct->name = $request->input('name');
