@@ -8,18 +8,27 @@
     <div class="col">
     <select name="product_id" class="form-control">
         @foreach($products AS $product)
-            <option value={{ $product->id }}>{{ $product->sku }} - {{ $product->name }}</option>
+            <option value={{ $product->id }}>{{ $product->sku }} - {{ $product->name }} ({{ $product->availableQty() }} em estoque)</option>
         @endforeach
     </select>
-      <!-- <input type="text" name="product_id" class="form-control" placeholder="Produto"> -->
     </div>
     <div class="col">
-      <input type="number" name="qty" class="form-control" placeholder="Quantidade">
+      <input type="number" name="qty" class="form-control" placeholder="Quantidade (para saídas informar valor negativo)">
     </div>
   </div>
-
-  <button type="submit" class="btn btn-primary">Cadastrar novo produto</button>
+  <input type="hidden" name="source" value="sistema" />
+  <button type="submit" class="btn btn-primary">Cadastrar movimentação</button>
 </form>
 
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 @endsection

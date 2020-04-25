@@ -23,7 +23,7 @@
 <tr>
     <td>{{ $product->sku }}</td>
     <td>{{ $product->name }}</td>
-    <td>{{ $product->availableQty() }}</td>
+    <td>{{ $product->availableQty() }} {{ $product->availableQty() > 100 ? '' : '(Alerta de estoque baixo)'}}</td>
     <td><a href="{{ route('products.edit', $product->id) }}">Editar</a></td>
 </tr>
 
