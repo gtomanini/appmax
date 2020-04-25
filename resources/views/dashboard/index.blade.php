@@ -2,10 +2,15 @@
 
 @section('content')
 <h1>Lista de produtos</h1>
-<a href="{{ route('products.create') }}"><button type="button" class="btn btn-primary">Cadastrar novo produto</button></a> 
-<a href="{{ route('stock.create') }}"><button type="button" class="btn btn-primary">Cadastrar nova movimentação de estoque</button></a> 
+<div class="card">
+    <div class="card-body">
+        <a href="{{ route('products.create') }}"><button type="button" class="btn btn-primary">Cadastrar novo produto</button></a> 
+        <a href="{{ route('stock.create') }}"><button type="button" class="btn btn-primary">Cadastrar nova movimentação de estoque</button></a> 
+    </div>
+</div>
 
-
+<div class="card">
+    <div class="card-body">
 <table class='table table-striped'>
 <thead class='thead-dark'>
     <th scope="col">SKU</th>
@@ -19,11 +24,12 @@
     <td>{{ $product->sku }}</td>
     <td>{{ $product->name }}</td>
     <td>{{ $product->availableQty() }}</td>
-    <td></td>
+    <td><a href="{{ route('products.edit', $product->id) }}">Editar</a></td>
 </tr>
 
 
 @endforeach
 </tbody>
 </table>
+    </div></div>
 @endsection

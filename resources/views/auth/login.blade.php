@@ -65,11 +65,16 @@
                                 
                             </div>
                         </div>
+                        <hr>
+                        <div class="form-group row">
+                            <div class="col-md-8 offset-md-4">
+                                <label class="form-check-label" for="register">
+                                    Não tem uma conta?
+                                </label>
+                                <a class="" href="{{ route('register') }}">Cadastre-se.</a>
+                                
+                            </div>
 
-                        <div class="form-group row mb-0">
-                        <div class="col-md-8 offset-md-4">
-                        Não tem uma conta? 
-                        <a class="nav-link" href="{{ route('register') }}"><button class="btn btn-info">Cadastre-se.</button></a>
                         </div>
                         </div>
 

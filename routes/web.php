@@ -44,7 +44,7 @@ Route::post('/products', [
     'uses' => 'ProductsController@store',
 ]);
 
-Route::put('/products', [
+Route::post('/products/update', [
     'as' => 'products.update',
     'middleware' => ['auth'],
     'uses' => 'ProductsController@update',
@@ -54,6 +54,12 @@ Route::get('/stock', [
     'as' => 'stock.list',
     'middleware' => ['auth'],
     'uses' => 'StockMovesController@index',
+]);
+
+Route::get('/stock/report', [
+    'as' => 'stock.report',
+    'middleware' => ['auth'],
+    'uses' => 'StockMovesController@report',
 ]);
 
 Route::get('/stock/create', [

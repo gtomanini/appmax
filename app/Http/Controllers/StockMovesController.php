@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -24,6 +25,14 @@ class StockMovesController extends BaseController {
         ]);
     }
 
+    public function report() {
+        $todayMoves = StockMoves::where('created_at', '>', Carbon::today())->get();
+
+        return view('stock.report', [
+            'todayMoves' => $todayMoves
+        ]);
+    }
+
     public function create() {
         return view('stock.form', [
             'products' => Product::all()
@@ -38,7 +47,6 @@ class StockMovesController extends BaseController {
         $newStock->save();
 
         return redirect()->route('dashboard');
-
     }
 
 

@@ -8,7 +8,7 @@
     <div class="col">
     <select name="product_id" class="form-control">
         @foreach($products AS $product)
-            <option value={{ $product->id }}>{{ $product->name }}</option>
+            <option value={{ $product->id }}>{{ $product->sku }} - {{ $product->name }}</option>
         @endforeach
     </select>
       <!-- <input type="text" name="product_id" class="form-control" placeholder="Produto"> -->
